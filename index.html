@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>One Piece Description</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0e1a;
+      --deep: #0d1525;
+      --gold: #c9922a;
+      --gold-light: #f0c060;
+      --red: #c0392b;
+      --white: #f0ece0;
+      --gray: #8a8a9a;
+      --card-bg: #111827;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,14,26,0.95);
+      border-bottom: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 64px;
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--gold-light);
+      text-decoration: none;
+      letter-spacing: 2px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--white); text-decoration: none;
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 1px; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── SEARCH BAR ── */
+    .search-wrap {
+      display: flex; align-items: center;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--gold);
+      border-radius: 24px; overflow: hidden;
+      padding: 4px 12px; gap: 6px;
+    }
+    .search-wrap input {
+      background: none; border: none; outline: none;
+      color: var(--white); font-family: 'Lato', sans-serif;
+      font-size: 0.85rem; width: 160px;
+    }
+    .search-wrap input::placeholder { color: var(--gray); }
+    .search-wrap button {
+      background: none; border: none; cursor: pointer;
+      color: var(--gold-light); font-size: 1rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 64px;
+      min-height: 92vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(201,146,42,0.18) 0%, transparent 65%),
+        linear-gradient(180deg, #0d1525 0%, #0a0e1a 100%);
+      padding: 4rem 2rem 3rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '☠';
+      position: absolute; font-size: 28rem; opacity: 0.03;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 6px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 900; line-height: 1;
+      color: var(--gold-light);
+      text-shadow: 0 0 40px rgba(201,146,42,0.4);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span { color: var(--red); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--gray);
+      max-width: 560px; line-height: 1.7; margin: 1.2rem auto 2rem;
+    }
+    .hero-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      color: #fff; text-decoration: none;
+      font-family: 'Cinzel', serif; font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 2px;
+      padding: 14px 36px; border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(201,146,42,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,146,42,0.5); }
+
+    /* ── FEATURED ZORO ── */
+    .featured {
+      background: var(--deep);
+      padding: 5rem 2rem;
+    }
+    .featured-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .featured-img-wrap {
+      position: relative;
+    }
+    .featured-img-wrap::before {
+      content: '';
+      position: absolute; inset: -8px;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      opacity: 0.5;
+    }
+    .featured-img-wrap img {
+      width: 100%; border-radius: 2px;
+      display: block;
+      filter: saturate(1.1);
+    }
+    .featured-badge {
+      position: absolute; top: -14px; left: 20px;
+      background: var(--red); color: #fff;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 3px; padding: 4px 14px;
+    }
+    .featured-info h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900; color: var(--gold-light);
+      line-height: 1.1; margin-bottom: 0.3rem;
+    }
+    .featured-info .role {
+      color: var(--red); font-family: 'Cinzel', serif;
+      font-size: 0.85rem; letter-spacing: 3px;
+      text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .featured-info p {
+      color: #b0b8c8; line-height: 1.8; font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .stats-row { display: flex; gap: 2rem; margin-top: 1.5rem; }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Cinzel', serif; font-size: 1.8rem;
+      font-weight: 900; color: var(--gold-light);
+      display: block;
+    }
+    .stat-label { font-size: 0.7rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+    .divider { width: 1px; background: rgba(201,146,42,0.3); }
+
+    /* ── SECTION TITLE ── */
+    .section-title-wrap {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 5px; color: var(--gold); text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 900; color: var(--white);
+    }
+    .section-title span { color: var(--gold-light); }
+
+    /* ── CREW CARDS ── */
+    .crew-section { padding: 5rem 2rem; background: var(--navy); }
+    .crew-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(201,146,42,0.2);
+      border-radius: 6px; overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(201,146,42,0.2);
+    }
+    .card-img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .card-placeholder {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #1a2035, #0f1722);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .card-placeholder span { font-size: 2.5rem; opacity: 0.3; }
+    .card-placeholder p { color: var(--gray); font-size: 0.75rem; letter-spacing: 2px; }
+    .card-body { padding: 1.2rem; }
+    .card-role {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 3px; color: var(--gold); text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .card-name {
+      font-family: 'Cinzel', serif; font-size: 1.2rem;
+      font-weight: 700; color: var(--white); margin-bottom: 0.5rem;
+    }
+    .card-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+    .card-tag {
+      display: inline-block; margin-top: 0.8rem;
+      background: rgba(201,146,42,0.12);
+      border: 1px solid rgba(201,146,42,0.3);
+      color: var(--gold-light); font-size: 0.7rem;
+      letter-spacing: 1px; padding: 3px 10px; border-radius: 20px;
+    }
+
+    /* ── CHOPPER SECTION ── */
+    .chopper-section {
+      background: var(--deep); padding: 5rem 2rem;
+    }
+    .chopper-grid {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .chopper-card {
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid rgba(201,146,42,0.25);
+      background: var(--card-bg);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .chopper-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(201,146,42,0.15); }
+    .chopper-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; }
+    .chopper-label {
+      padding: 1rem 1.2rem;
+    }
+    .chopper-label h3 {
+      font-family: 'Cinzel', serif; font-size: 1rem;
+      color: var(--gold-light); margin-bottom: 0.3rem;
+    }
+    .chopper-label p { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060910;
+      border-top: 2px solid var(--gold);
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p { color: var(--gray); font-size: 0.8rem; letter-spacing: 1px; }
+    footer strong { color: var(--gold-light); font-family: 'Cinzel', serif; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .featured-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .chopper-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .search-wrap input { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">☠ <span>ONE PIECE</span> DESC</a>
+  <ul class="nav-links">
+    <li><a href="#crew">The Crew</a></li>
+    <li><a href="#zoro">Zoro</a></li>
+    <li><a href="#chopper">Chopper</a></li>
+  </ul>
+  <div class="search-wrap">
+    <input type="text" placeholder="Search crew..." id="searchInput" oninput="filterCards()"/>
+    <button>🔍</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">The Grand Line Awaits</p>
+  <h1>ONE PIECE<br/><span>Description</span></h1>
+  <p class="hero-sub">Meet the legendary Straw Hat Pirates — a crew of misfits, dreamers, and warriors sailing toward the greatest treasure in the world.</p>
+  <a href="#crew" class="hero-btn">Meet The Crew</a>
+</section>
+
+<!-- FEATURED ZORO -->
+<section class="featured" id="zoro">
+  <div class="featured-inner">
+    <div class="featured-img-wrap">
+      <span class="featured-badge">FEATURED</span>
+      <img src="zoro.webp" alt="Roronoa Zoro"/>
+    </div>
+    <div class="featured-info">
+      <div class="role">⚔ First Mate · Swordsman</div>
+      <h2>Roronoa<br/>Zoro</h2>
+      <p>The Pirate Hunter. Zoro is the first member to join Monkey D. Luffy's crew, a ruthless swordsman who wields three blades simultaneously using the legendary <em>Santoryu</em> style. His dream: to become the world's greatest swordsman.</p>
+      <p>Fiercely loyal and often terrifyingly calm in battle, Zoro carries the weight of a promise made to his fallen rival, Kuina. Nothing — not even death — will stop him from reaching his goal.</p>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Swords</span></div>
+        <div class="divider"></div>
+        <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Willpower</span></div>
+        <div class="divider"></div>
+        <div class="stat"><span class="stat-num">0</span><span class="stat-label">Sense of Direction</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREW CARDS -->
+<section class="crew-section" id="crew">
+  <div class="section-title-wrap">
+    <p class="section-eyebrow">Straw Hat Pirates</p>
+    <h2 class="section-title">The <span>Crew</span></h2>
+  </div>
+  <div class="crew-grid" id="crewGrid">
+
+    <!-- LUFFY -->
+    <div class="card" data-name="luffy monkey d">
+      <img class="card-img" src="luffy.webp" alt="Monkey D. Luffy"/>
+      <div class="card-body">
+        <div class="card-role">👒 Captain</div>
+        <div class="card-name">Monkey D. Luffy</div>
+        <div class="card-desc">Rubber-bodied dreamer who ate the Gum-Gum Devil Fruit. His goal is to become the King of the Pirates and find the One Piece. Reckless, fearless, and fiercely protective of his crew.</div>
+        <span class="card-tag">Devil Fruit User</span>
+      </div>
+    </div>
+
+    <!-- NAMI -->
+    <div class="card" data-name="nami navigator">
+      <img class="card-img" src="nami.jpg" alt="Nami"/>
+      <div class="card-body">
+        <div class="card-role">🗺 Navigator</div>
+        <div class="card-name">Nami</div>
+        <div class="card-desc">The Straw Hats' brilliant navigator with an unmatched talent for reading weather and charting seas. Wields the Clima-Tact to control atmospheric conditions in battle.</div>
+        <span class="card-tag">Weather Tactician</span>
+      </div>
+    </div>
+
+    <!-- SANJI -->
+    <div class="card" data-name="sanji cook chef">
+      <img class="card-img" src="sanji.jpg" alt="Sanji"/>
+      <div class="card-body">
+        <div class="card-role">🍳 Cook</div>
+        <div class="card-name">Sanji</div>
+        <div class="card-desc">The Black Leg, a chivalrous chef whose deadly kick-based fighting style burns with the fire of Ifrit Jambe. Seeks the legendary ocean All Blue, where all seas connect.</div>
+        <span class="card-tag">Vinsmoke Lineage</span>
+      </div>
+    </div>
+
+    <!-- ROBIN -->
+    <div class="card" data-name="robin archaeologist nico">
+      <img class="card-img" src="robin.jpg" alt="Nico Robin"/>
+      <div class="card-body">
+        <div class="card-role">📖 Archaeologist</div>
+        <div class="card-name">Nico Robin</div>
+        <div class="card-desc">The only surviving scholar able to read the Poneglyphs — ancient stones holding the world's true history. Ate the Hana Hana no Mi, sprouting copies of her body parts anywhere.</div>
+        <span class="card-tag">Devil Fruit User</span>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER 1 -->
+    <div class="card" data-name="usopp sniper">
+      <div class="card-placeholder">
+        <span>🎯</span>
+        <p>IMAGE COMING SOON</p>
+      </div>
+      <div class="card-body">
+        <div class="card-role">🎯 Sniper</div>
+        <div class="card-name">Usopp</div>
+        <div class="card-desc">The crew's inventive sniper and storyteller extraordinaire. Known as the brave warrior Sogeking, his marksmanship and engineering genius save the crew time and again.</div>
+        <span class="card-tag">God Usopp</span>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER 2 -->
+    <div class="card" data-name="franky shipwright cyborg">
+      <div class="card-placeholder">
+        <span>🔧</span>
+        <p>IMAGE COMING SOON</p>
+      </div>
+      <div class="card-body">
+        <div class="card-role">🔧 Shipwright</div>
+        <div class="card-name">Franky</div>
+        <div class="card-desc">A cola-powered cyborg shipwright who built the Straw Hats' ship, the Thousand Sunny, from the legendary Adam Wood. SUUUPER strong and SUUUPER loud.</div>
+        <span class="card-tag">Cyborg</span>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER 3 -->
+    <div class="card" data-name="brook musician soul">
+      <div class="card-placeholder">
+        <span>🎵</span>
+        <p>IMAGE COMING SOON</p>
+      </div>
+      <div class="card-body">
+        <div class="card-role">🎵 Musician</div>
+        <div class="card-name">Brook</div>
+        <div class="card-desc">A living skeleton who ate the Revive-Revive Fruit and cheated death. Soul King Brook battles with music and a shikomizue blade, his afro keeping his spirit alive.</div>
+        <span class="card-tag">Soul King</span>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER 4 -->
+    <div class="card" data-name="jinbe helmsman fish-man">
+      <div class="card-placeholder">
+        <span>🌊</span>
+        <p>IMAGE COMING SOON</p>
+      </div>
+      <div class="card-body">
+        <div class="card-role">🌊 Helmsman</div>
+        <div class="card-name">Jinbe</div>
+        <div class="card-desc">A fish-man karate master and former Warlord of the Sea who joined Luffy after the events of Whole Cake Island. His calm strength anchors the crew at sea.</div>
+        <span class="card-tag">Fish-Man Karate</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHOPPER -->
+<section class="chopper-section" id="chopper">
+  <div class="section-title-wrap">
+    <p class="section-eyebrow">Tony Tony Chopper</p>
+    <h2 class="section-title">Doctor · <span>Devil Fruit User</span></h2>
+    <p style="color:var(--gray);max-width:540px;margin:0.8rem auto 0;font-size:0.9rem;line-height:1.7">
+      A reindeer who ate the Human-Human Fruit, Chopper can transform between multiple forms using his Rumble Ball. His dream is to become a doctor capable of curing any disease in the world.
+    </p>
+  </div>
+  <div class="chopper-grid">
+    <div class="chopper-card">
+      <img src="chopper-normal.jpg" alt="Chopper Normal Form"/>
+      <div class="chopper-label">
+        <h3>🩺 Normal Form</h3>
+        <p>In his adorable default form, Chopper is the crew's beloved doctor — small, fluffy, and surprisingly capable of advanced medical procedures taught by Dr. Hiluluk and Dr. Kureha.</p>
+      </div>
+    </div>
+    <div class="chopper-card">
+      <img src="chopper-monster.jpg" alt="Chopper Monster Point"/>
+      <div class="chopper-label">
+        <h3>👹 Monster Point</h3>
+        <p>An enormous, uncontrollable transformation triggered by three Rumble Balls. Monster Point grants Chopper catastrophic strength at the cost of his own consciousness. Pure, raw power.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>One Piece Description</strong> &nbsp;·&nbsp; Fan tribute site &nbsp;·&nbsp; One Piece © Eiichiro Oda / Shueisha</p>
+</footer>
+
+<script>
+  function filterCards() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('.card').forEach(card => {
+      const name = card.dataset.name || '';
+      card.style.display = name.includes(q) || q === '' ? '' : 'none';
+    });
+  }
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card, .chopper-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.25s, box-shadow 0.25s';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
